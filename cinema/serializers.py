@@ -136,9 +136,9 @@ class OrderSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        ticket = validated_data.pop("tickets")
+        tickets = validated_data.pop("tickets")
         order = Order.objects.create(**validated_data)
-        for ticket_data in ticket:
+        for ticket_data in tickets:
             Ticket.objects.create(order=order, **ticket_data)
         return order
 

@@ -117,7 +117,6 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
 
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
-    pagination_class = None
 
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user).prefetch_related(
